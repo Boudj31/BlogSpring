@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div th:replace="navigation::site-header"></div>
 <div class="container">
+    <!--
     <nav class="navigation">
         <ul>
             <li class="li-home"><a href="home.html" data-th-href="@{/}">Home</a></li>
@@ -14,9 +16,20 @@
             <li><a href="./login.html" data-th-href="@{/login}">Login</a></li>
         </ul>
     </nav>
+    -->
     <div class="section">
-        <h1 class="title"> Hello word </h1>
-        <h3 class="subtitle">Welcome to this amazing website</h3>
+        <h1 class="title"> My super Blog</h1>
+        <h3 class="subtitle">Don't miss our latest Article</h3>
+        <div class="latest">
+            <img src="https://cdn.pixabay.com/photo/2018/08/19/07/05/background-3616101_1280.jpg" alt="" class="latest-img">
+            <div class="latest-right">
+                <h3 class="latest-title">Article super interessant</h3>
+                <p class="latest-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid aspernatur assumenda beatae dignissimos distinctio dolore eligendi, eum illum ipsam iure maxime nobis odit omnis quo recusandae reiciendis rerum veritatis?</p>
+                <p>12/12/2022</p>
+                <p>Ansaka M.</p>
+            </div>
+
+        </div>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ipsa iusto molestiae molestias qui recusandae reiciendis, voluptate. Aperiam architecto cum dolor neque pariatur qui quisquam recusandae, repudiandae, saepe similique, ut?</p>
     </div>
     <div class="section">
@@ -24,21 +37,45 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ipsa iusto molestiae molestias qui recusandae reiciendis, voluptate. Aperiam architecto cum dolor neque pariatur qui quisquam recusandae, repudiandae, saepe similique, ut?</p>
     </div>
     <div class="cards">
-        <div class="card">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-desc">Card desccription Card desccription Card desccription Card desccription Card desccription Card desccription Card desccription</p>
+        <div class="card card-blog" th:each="p : ${posts}">
+            <img src="https://cdn.pixabay.com/photo/2022/02/15/00/40/lemonade-7014122_1280.jpg" alt="" class="card-img">
+            <div class="desc">
+                <span th:text="${p.author.firstName}"
+                      class="author">
+                </span>
+                <span th:text="${p.createdAt}"></span>
+                <h3 class="card-title" th:text="${p.title}">
+                </h3>
+                <p class="text" th:text="${p.description}"></p>
+            </div>
         </div>
-        <div class="card">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-desc">Card desccription Card desccription Card desccription Card desccription Card desccription Card desccription Card desccription</p>
+         <!--
+        <div class="card card-blog">
+            <img src="https://cdn.pixabay.com/photo/2022/02/15/00/40/lemonade-7014122_1280.jpg" alt="" class="card-img">
+            <div class="desc">
+                <span class="author">Ansaka M.</span>
+                <h3 class="card-title">
+                    Mon super titre
+                </h3>
+                <p class="text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam </p>
+            </div>
         </div>
-        <div class="card">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-desc">Card desccription Card desccription Card desccription Card desccription Card desccription Card desccription Card desccription</p>
+        <div class="card card-blog">
+            <img src="https://cdn.pixabay.com/photo/2022/02/15/00/40/lemonade-7014122_1280.jpg" alt="" class="card-img">
+            <div class="desc">
+                <span class="author">Ansaka M.</span>
+                <h3 class="card-title">
+                    Mon super titre
+                </h3>
+                <p class="text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam </p>
+            </div>
         </div>
+        -->
     </div>
 
 </div>
+<footer th:replace="footer::footer">
+</footer>
 
 
 </body>

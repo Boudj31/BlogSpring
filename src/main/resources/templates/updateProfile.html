@@ -2,40 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>Update profil</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div th:replace="navigation::site-header"></div>
 <main id="register" class="container">
     <div class="container-sm">
-        <h2 class="title">Register</h2>
-        <form method="post" th:action="@{/registerSubmit}" th:object="${user}" class="form">
+        <h2 class="title">Update my profil</h2>
+        <form method="post"
+              th:action="@{/update/{id}(id=${user.id})}"
+              th:object="${user}"
+              class="form">
             <div class="form-group">
                 <label for="firstname">Firstname</label>
-                <input type="text" id="firstname" name="firstname" class="form-control" placeholder="John" th:field="*{firstName}"/>
+                <input type="text" id="firstname" name="firstname" class="form-control" value="" placeholder="John" th:field="*{firstName}"/>
             </div>
+            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
             <div class="form-group">
                 <label for="lastname">Lastname</label>
                 <input type="text" id="lastname" name="lastname" class="form-control" placeholder="DOE" th:field="*{lastName}"/>
             </div>
+            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
             <div class="form-group">
                 <label for="city">City</label>
                 <input type="text" id="city" name="city" class="form-control" placeholder="New-York" th:field="*{city}"/>
             </div>
+            <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></span>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text" id="email" name="email" class="form-control" placeholder="john@doe.fr" th:field="*{email}"/>
             </div>
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
 
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="passwordHash" name="passwordHash" class="form-control" placeholder="********" th:field="*{password}"/>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Register" class="submit"/>
-                <a href="login.html" th:href="@{/login}">Already an account ? go to LoginPage</a>
+                <input type="submit" value="Update" class="submit"/>
+                <button>Back</button>
             </div>
         </form>
 

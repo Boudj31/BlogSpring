@@ -12,4 +12,5 @@ public interface IUserService {
     User findById(long id);
     User updateProfil(User user);
     void deleteProfil(long id);
+    User updateProfile(User user) throws Exception;
 }

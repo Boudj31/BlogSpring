@@ -6,16 +6,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div th:replace="navigation::site-header"></div>
 <main id="login" class="container">
-
-    <nav class="navigation">
-        <ul>
-            <li class="li-home"><a href="home.html" data-th-href="@{/}">Home</a></li>
-            <li><a href="register.html" data-th-href="@{/register}">Register</a></li>
-            <li><a href="./login.html" data-th-href="@{/login}">Login</a></li>
-        </ul>
-    </nav>
-
     <div class="container-sm">
         <h2 class="title">Login</h2>
         <form method="post" th:action="@{/connexion}" th:object="${loginForm}" class="form">
@@ -37,5 +29,7 @@
 
     </div>
 </main>
+<footer th:replace="footer::footer">
+</footer>
 </body>
 </html>
