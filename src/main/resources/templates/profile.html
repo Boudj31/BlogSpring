@@ -9,13 +9,8 @@
     <title>Document</title>
 </head>
 <body>
+<div th:replace="navigation::site-header"></div>
 <div class="container">
-<nav class="navigation">
-    <ul>
-        <li class="li-home"><a href="home.html" data-th-href="@{/}">Home</a></li>
-        <li><a data-th-href="@{/logout}">Logout</a></li>
-    </ul>
-</nav>
 <div class="container-sm">
   <h2 class="title">
       Welcome <span data-th-text="${userInfos.firstName}"></span>
@@ -41,10 +36,13 @@
     </table>
 
         <a th:href="@{'/profile/delete/'+${userInfos.id}}"><button type="button" class="btn">Delete my account</button></a>
+    <a th:href="@{/profile/edit/{id}(id=${userInfos.id})}"><button type="button" class="btn">Update my infos</button></a>
 
 
 </div>
 </div>
+<footer th:replace="footer::footer">
+</footer>
 
 </body>
 </html>

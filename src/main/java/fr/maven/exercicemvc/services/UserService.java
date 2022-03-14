@@ -52,5 +52,17 @@ public class UserService implements IUserService{
 
     }
 
+    @Override
+    public User updateProfile(User user) throws Exception {
+      //  Optional<User> userExist = userRepository.findById(user.getId());
+        //if(userExist.isPresent()) {
+         //   user.setPassword(HashTools.hashSHA512(user.getPassword()));
+      //  } else {
+      //      throw new Exception("the User doesn't exist in Database");
+      //  }
+        userRepository.saveAndFlush(user);
+        return user;
+    }
+
 
 }

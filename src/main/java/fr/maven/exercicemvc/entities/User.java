@@ -2,6 +2,8 @@ package fr.maven.exercicemvc.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class User implements Serializable {
@@ -10,16 +12,21 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 30, unique = true)
     private String email;
 
+    @Column(length = 100)
     private String firstName;
 
     private String lastName;
 
     private String city;
 
+    @Column(length = 60)
     private String password;
+
+    @OneToMany(mappedBy = "author")
+    private Set<Post> posts = new HashSet<>();
 
     public Long getId() {
         return id;
